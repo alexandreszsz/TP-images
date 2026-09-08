@@ -1,3 +1,7 @@
 import numpy as np
-import pandas as pd
 from matplotlib import pyplot as plt
+
+t=np.zeros((91,91,3))
+t=np.array(t,dtype=np.int8)
+plt.imshow(t)
+plt.show
