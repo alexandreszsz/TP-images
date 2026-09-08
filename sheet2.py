@@ -2,5 +2,48 @@ import numpy as np
 from matplotlib import pyplot as plt
 image=plt.imread("data/les-mines.jpg")
 image.flags.writeable
-plt.imshow(image)
+#plt.imshow(image)
+
+type(image) # type de l'image : <class 'numpy.ndarray'>
+np.shape(image) # Forme de l'image :  (533, 800, 3)
+type(image[0,0,0]) # Nombre d'octets des entiers encodés et type des entiers: <class 'numpy.uint8'>
+print(image.max(),image.min()) #max et min
+imbis=image[:10,:10]
+#plt.imshow(imbis)
+
+imsliced=image[:,::10]
+#plt.imshow(imsliced)
+(l, c) = (100, 200)
+
+immid=image[533//2-l//2:533//2+l//2,400-c//2:400+c//2]
+#plt.imshow(immid)
+imred,imgreen,imblue = image[:,:,0], image[:,:,1] , image[:,:,2]
+plt.imshow(imred)
 plt.show()
+plt.imshow(imgreen)
+plt.show()
+plt.imshow(imblue)
+plt.show() #Séparation des canaux
+#Corrigeons ces images d'apparences vertes ->
+
+imred2 = np.copy(image)
+imred2[:,:,1]=0
+imred2[:,:,2]=0
+plt.imshow(imred2)
+plt.show()
+
+imgreen2 = np.copy(image)
+imgreen2[:,:,0]=0
+imgreen2[:,:,2]=0
+plt.imshow(imgreen2)
+plt.show()
+
+imblue2 = np.copy(image)
+imblue2[:,:,1]=0
+imblue2[:,:,0]=0
+plt.imshow(imblue2)
+plt.show()
+#Séparation des canaux en gardant leur couleur
+
+
+
