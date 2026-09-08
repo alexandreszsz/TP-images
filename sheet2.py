@@ -45,5 +45,20 @@ plt.imshow(imblue2)
 plt.show()
 #Séparation des canaux en gardant leur couleur
 
+im5 = np.copy(image)
+#on remplace un carré 200*200 par un carré de couleur (219, 112, 147)
+im5[333:,600:]=(219, 112, 147)
+plt.imshow(im5)
+plt.show()
+#on remplace un carré 200*200 par un carré blanc rayé de rouge
+im6= np.copy(image)
+im6[333:,600:]=(255, 255, 255)
+im6[333::3,600:]=(255,0,0)
+im6[333:,600::3]=(255,0,0)
+plt.imshow(im6)
+plt.show()
 
+#instauration d'un canal alpha
 
+im7 = np.empty(533,800,4)
+im7[:,:,:3]= image
