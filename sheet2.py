@@ -18,7 +18,7 @@ imsliced=image[:,::10]
 immid=image[533//2-l//2:533//2+l//2,400-c//2:400+c//2]
 #plt.imshow(immid)
 imred,imgreen,imblue = image[:,:,0], image[:,:,1] , image[:,:,2]
-plt.imshow(imred)
+"""plt.imshow(imred)
 plt.show()
 plt.imshow(imgreen)
 plt.show()
@@ -58,7 +58,26 @@ im6[333:,600::3]=(255,0,0)
 plt.imshow(im6)
 plt.show()
 
-#instauration d'un canal alpha
+# --- instauration d'un canal alpha ---
 
-im7 = np.empty(533,800,4)
+im7 = np.empty((533,800,4),dtype=image.dtype)
 im7[:,:,:3]= image
+im7[:,:,3] =128
+plt.imshow(im7)
+plt.show()
+
+# --- image en niveaux de gris en float ---
+"""
+im8=np.empty((533,800,3))
+im8[:,:,:]=(image[:,:,:]/255)
+plt.imshow(im8)
+plt.show()
+
+im9=im8.mean(2) #image en niveaux de gris
+plt.imshow(im9)
+plt.show()
+
+im10=np.copy(im8) #image en niveaux de gris avec la correction
+im10= 0.299 * im8[:,:,0] + 0.587 * im8[:,:,1] + 0.114 * im8[:,:,2]
+plt.imshow(im10)
+plt.show()
